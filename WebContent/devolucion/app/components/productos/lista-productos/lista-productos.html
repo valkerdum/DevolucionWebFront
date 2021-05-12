@@ -1,0 +1,210 @@
+<div ng-controller="listaProductosCtrl as lpCtrl" ng-init="lpCtrl.init()">
+    <div class="container dashboard-estados py-5">
+        <div class="row">
+            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                <div class="estado pendientes" ng-click="lpCtrl.filtrarGrilla('Pendiente')">
+                    <h4>Pendientes {{lpCtrl.pendientes}}</h4>
+                    <img src="images/box-header.png" width="80" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                <div class="estado aceptadas" ng-click="lpCtrl.filtrarGrilla('Aprobada')">
+                    <h4>Aprobadas {{lpCtrl.aceptadas}}</h4>
+                    <img src="images/box-header-ok.png" width="80" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                <div class="estado rechazadas" ng-click="lpCtrl.filtrarGrilla('Rechazado')">
+                    <h4>Rechazadas {{lpCtrl.rechazadas}}</h4>
+                    <img src="images/box-header-nok.png" width="80" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container mb-5">
+        <div class="row" style="padding: 12px;">
+            <table>
+                <tr>
+                    <td>
+                        <label for="lista-productos-desde">Desde:</label>
+                    </td>
+                    <td><label for="lista-productos-hasta">Hasta:</label></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <datepicker date-format="dd-MM-yyyy" date-week-start-day="1" date-min-limit="{{lpCtrl.minDate}}"
+                            date-max-limit="{{lpCtrl.dateYYYYMMDD(lpCtrl.hasta)}}" class="mr-3">
+                            <input id="lista-productos-desde" ng-model="lpCtrl.desde" type="text" readonly data-date-end-date="0d" />
+                        </datepicker> 
+                    </td>
+                    <td>
+                        <datepicker date-format="dd-MM-yyyy" date-week-start-day="1"
+                            date-min-limit="{{lpCtrl.dateYYYYMMDD(lpCtrl.desde)}}" date-max-limit="{{lpCtrl.today}}"
+                            class="mr-3">
+                            <input id="lista-productos-hasta" ng-model="lpCtrl.hasta" type="text" readonly />
+                        </datepicker>
+                    </td>
+                    <td><button ng-click="lpCtrl.buscar()" type="button" style="font-size: initial;
+                        padding: 1px 25px;" class="btn btn-primary btn-lg btn-block">Buscar</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="dash-data-table">
+                    <header>
+                        <p class="mb-0">Listado de solicitudes</p>
+                    </header>
+                    <section>
+
+                        <div class="row mb-3">
+                            <div class="col"></div>
+                            <div class="col-auto">
+                                <span>Filtrar:</span>
+                                <input type="text" ng-change="lpCtrl.filtrar()" name="filtro" ng-model="lpCtrl.filtro"
+                                    style="height: 26px;
+                                margin-left: 10px;
+                                margin-right: 10px;
+                                width: 175px;
+                                font-size: medium;
+                                padding-left: 5px;">
+                            </div>
+                        </div>
+
+                        <form name="myForm" ng-if="!lpCtrl.loadingProductos && !lpCtrl.error" novalidate>
+                            <table id="example" class="table table-striped display"
+                                style="width:100%; background: white;">
+                                <thead>
+                                    <tr>
+                                    	<th>Empresa</th>
+                                        <th>Nombre</th>
+                                        <th>Nº Orden de Servicio</th>
+                                        <th>Nº Solicitud</th>
+                                        <th>Producto</th>
+                                        <th>Motivo</th>
+                                        <th>Fecha Ingreso</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dashboard">
+                                    <tr ng-repeat-start="producto in lpCtrl.productosPaginados"
+                                        ng-click="lpCtrl.goToDetail(producto)"
+                                        ng-class="{'c-pointer': producto.estadoDevolucion === 'Pendiente'}">
+                                        <td>{{producto.nombreEmpresa}}</td>
+                                        <td>{{producto.nombreCliente}}</td>
+                                        <td>{{producto.numeroOrdenServicio}}</td>
+                                        <td>{{producto.numeroRequerimiento}}</td>
+                                        <td>{{producto.nombreProducto}}</td>
+                                        <td>{{producto.motivoDevolucion}}</td>
+                                        <td>{{producto.fechaIngresoDevolucion}}</td>
+                                        <td>{{producto.estadoDevolucion}}</td>
+                                    </tr>
+                                    <tr ng-repeat-end
+                                        ng-if="lpCtrl.producto.numeroRequerimiento === producto.numeroRequerimiento">
+                                        <td colspan="7">
+                                            <div class="row p-2">
+                                                <div class="col-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="telefono">Teléfono*</label>
+                                                        <input type="text" class="form-control" name="telefono"
+                                                            ng-model="lpCtrl.producto.telefonoCliente" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="email">Email*</label>
+                                                        <input type="email" class="form-control" name="email"
+                                                            ng-model="lpCtrl.producto.emailCliente" readonly>
+
+                                                    </div>
+                                                </div>
+                                                <div class="w-100"></div>
+                                                <div class="col-12 col-md-4">
+                                                    <div class="form-group"> <label for="accion">Accion</label> <select
+                                                            class="form-control" name="accion"
+                                                            ng-model="lpCtrl.producto.accion">
+                                                            <option value="4">Acepta</option>
+                                                            <option value="2">Rechaza</option>
+                                                        </select> </div>
+                                                </div>
+                                                <div class="col-12 col-md-6" ng-if="lpCtrl.producto.accion === '2'">
+                                                    <div class="form-group"> <label for="motivo">Motivo</label> <input
+                                                            type="text" class="form-control" name="motivo"
+                                                            ng-model="lpCtrl.producto.motivo"> </div>
+                                                </div>
+                                                <div class="col-12 col-md-2 align-items-end d-flex">
+                                                    <div class="form-group"> <button ng-click="lpCtrl.sendStatus()"
+                                                            type="button" class="btn btn-primary btn-lg btn-block"
+                                                            style="height: 38px; padding: 4px 16px; font-size: 1rem;"
+                                                            ng-disabled="!lpCtrl.validar()">Grabar</button> </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                    	<th>Empresa</th>
+                                        <th>Nombre</th>
+                                        <th>Nº Orden de Servicio</th>
+                                        <th>Nº Solicitud</th>
+                                        <th>Producto</th>
+                                        <th>Motivo</th>
+                                        <th>Fecha Ingreso</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item disabled" ng-class="{'disabled': lpCtrl.page === 0}">
+                                        <a class="page-link" ng-click="lpCtrl.toPage(lpCtrl.page-1)">Previous</a>
+                                    </li>
+                                    <li ng-repeat="item in lpCtrl.pages track by $index" class="page-item"
+                                        ng-class="{active: $index === lpCtrl.page}">
+                                        <a class="page-link" ng-click="lpCtrl.toPage($index)">{{$index + 1}}</a>
+                                    </li>
+                                    <li class="page-item"
+                                        ng-class="{'disabled': (lpCtrl.page + 1) * lpCtrl.pageSize >= lpCtrl.productosFiltrados.length}">
+                                        <a class="page-link" ng-click="lpCtrl.toPage(lpCtrl.page+1)">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+
+
+                        </form>
+                        <div ng-if="!lpCtrl.loadingProductos && lpCtrl.error">
+                            Error al cargar los datos.
+                        </div>
+
+                        <div ng-if="lpCtrl.loadingProductos">
+                            Cargando...
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mensaje de Devolución</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>{{lpCtrl.mensajeActualizacion}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        ng-click="lpCtrl.buscar();">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

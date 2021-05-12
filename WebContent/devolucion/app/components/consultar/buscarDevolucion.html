@@ -1,0 +1,81 @@
+
+<!-- ng-app="myApp" ng-controller="validateCtrl" onload="getParameterByName('numeroOC')" -->
+<section class="hero-msg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <h2>Devolución Web</h2>
+                <img src="assets/img/box-header.png" width="55" alt="">
+            </div>
+            <div class="col-12">
+                <hr>
+            </div>
+            <div class="col-12">
+                <h6>¿Necesitas realizar una devolución? Puedes revisar aquí con tu número de devolución.</h6>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container mb-5" ng-controller="consultaCtrl as cCtrl" ng-init="cCtrl.mostrarMensaje=false" >
+    <section class="inputs-forms mt-1">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 px-5 py-2 card-white" id="formIngreso">
+                <form  name="myForm" novalidate>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h4><strong style=" color: #0033a0;">Ingresa tu número de devolución</strong></h4>
+                            <div class="form-group">
+                                <input type="text" class="form-control2" id="numeroOC" ng-model="cCtrl.numeroOC">
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3 mb-4">
+                            <button type="submit" ng-click="cCtrl.buscarDevolucion()" class="btn btn-primary btn-lg btn-block">Consultar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+			<div>
+				<div class="col-xl-3 col-md-6 mb-4" style="flex: 0 0 60%; max-width:60%!important;" id="contenedorMensaje" ng-if="cCtrl.mostrarMensaje==='Pendiente'">
+					<div class="card border-center-primary shadow h-100 py-2" style="width:450px;">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center" id="mensaje">
+								<p>Tu solicitud de devolución <b style=color:#0033a0> Nº {{cCtrl.numeroOC}} </b> está </br>
+                				<strong> <b style=color:#0033a0> {{cCtrl.estado}} </b></strong> por la tienda.</br></br>
+                				 Te sugerimos volver a consultar en los próximos días.</p></b>
+							</div>
+						</div>
+					</div>
+				</div>
+        <div class="col-xl-3 col-md-6 mb-4" style="flex: 0 0 60%; max-width:60%!important;" id="contenedorMensaje" ng-if="cCtrl.mostrarMensaje==='Rechazado'">
+					<div class="card border-center-primary shadow h-100 py-2" style="width:450px;">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center" id="mensaje">
+								<p>Tu solicitud de devolución <b style=color:#0033a0> Nº {{cCtrl.numeroOC}} </b> fue </br>
+                				<strong> <b style=color:#0033a0> {{cCtrl.estado}} </b> </strong> por el eCommerce.</br></br>
+                				 Te recomendamos contactarlo, para que te puedan </br>
+                				 entregar una solución.</p></b>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6 mb-4" style="flex: 0 0 60%; max-width:60%!important;" id="contenedorMensaje" ng-if="cCtrl.mostrarMensaje==='Aprobada'">
+					<div class="card border-center-primary shadow h-100 py-2" style="width:450px;">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center" id="mensaje">
+								<p>Tu solicitud de devolución <b style=color:#0033a0> Nº {{cCtrl.numeroOC}} </b> fue </br>
+                				<strong><b style=color:#0033a0>  {{cCtrl.estado}} </b> </strong> por el eCommerce.</br></br>
+                				 Para realizar tu devolución debes seguir los pasos:</br></br>
+                				 <img src="images/paso-1.png" width="20px" height="20px" align="center" alt="" style="display:inline-block"> Imprimir la etiqueta enviada al mail.</br>
+                				 <img src="images/paso-2.png" width="20px" height="20px" align="center" alt="" style="display:inline-block"> Pegar la etiqueta a la caja de la encomienda</br>
+                				 que vas a devolver.</br>
+                				 <img src="images/paso-3.png" width="20px" height="20px" align="center" alt="" style="display:inline-block"> Dejarla en el punto Pick Up mas cercano.</br>
+                				 </p></b>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </section>
+</div>

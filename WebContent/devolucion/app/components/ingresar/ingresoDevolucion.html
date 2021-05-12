@@ -1,0 +1,218 @@
+<div ng-controller="ingresoCtrl as inCtrl" ng-init="inCtrl.ocultar()" class="clean-body"
+	style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%;">
+	<section class="hero-msg">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 d-flex justify-content-between align-items-center">
+					<h2>Devolución Web</h2>
+					<img src="images/box-header.png" width="55" alt="">
+				</div>
+				<div class="col-12">
+					<hr>
+				</div>
+				<div class="col-12">
+					<h6>
+						¿Necesitas realizar una devolución? Completa el siguiente
+						formulario:
+					</h6>
+				</div>
+			</div>
+		</div>
+	</section>
+	<form name="myForm">
+		<div class="container mb-5" id="paso1" name="paso1">
+			<section class="etapas">
+				<div class="row justify-content-center">
+					<div class="col-4 pr-0">
+						<div class="paso paso-uno align-items-start active">
+							<h5>PASO 1</h5>
+							<div class="circulo"></div>
+							<div class="linea"></div>
+						</div>
+					</div>
+					<div class="col-4 px-0">
+						<div class="paso paso-tres align-items-end ">
+							<h5>PASO 2</h5>
+							<div class="circulo"></div>
+							<div class="linea"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="inputs-forms mt-1">
+				<div class="row justify-content-center">
+					<h5 class="col-12 col-md-10 pl-0">DATOS DEL PRODUCTO</h5>
+					<div class="col-12 col-md-10 px-5 py-2 card-white">
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="ordenCompra">Número de Orden de Compra*</label> <span
+										class="f-tooltip float-right">i</span> <input type="text" class="form-control"
+										name="ordenCompra" required ng-model="inCtrl.formData.ordenCompra"
+										placeholder="Ej: AC00112233">
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="tipoProducto">Tipo de Producto*</label> <input type="text"
+										class="form-control" id="tipoProducto" ng-model="inCtrl.formData.tipoProducto"
+										required placeholder="Ej: Ropa, Electrodomesticos, etc">
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="codigoEmpresa">Empresa*</label> <select id="codigoEmpresa"
+										class="form-control" required ng-init="inCtrl.cargarEcommerces()"
+										ng-model="inCtrl.formData.codigoEmpresa"
+										ng-options="option.nombreEmpresa for option in inCtrl.formData.eCommerce track by option.codigoEmpresa">
+									</select>
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="codigoMotivo">Motivo*</label> <select id="codigoMotivo"
+										class="form-control" required ng-init="inCtrl.cargarMotivos()"
+										ng-model="inCtrl.formData.codigoMotivo"
+										ng-options="option.nombreMotivo for option in inCtrl.formData.motivos track by option.codigoMotivo">
+									</select>
+								</div>
+							</div>
+							<div class="col-12 text-right">
+								<p>*Campos obligatorios</p>
+							</div>
+							<div class="col-12">
+								<button ng-click="inCtrl.goPasoDos()" type="button"
+									class="btn btn-primary btn-lg btn-block">Validar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+		</div>
+	</form>
+	<form name="myForm2">
+		<!--paso2-->
+		<div class="container mb-5" id="paso2" name="paso2">
+			<section class="etapas">
+				<div class="row justify-content-center">
+					<div class="col-4 pr-0">
+						<div class="paso paso-uno align-items-start done">
+							<h5>PASO 1</h5>
+							<div class="circulo"></div>
+							<div class="linea"></div>
+						</div>
+					</div>
+					<div class="col-4 px-0">
+						<div class="paso paso-tres align-items-end done">
+							<h5>PASO 2</h5>
+							<div class="circulo"></div>
+							<div class="linea"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="inputs-forms mt-1">
+				<div class="row justify-content-center">
+					<h3 class="col-12 col-md-10 pl-0">DATOS PERSONALES</h3>
+					<div class="col-12 col-md-10 px-5 py-2 card-white">
+						<div class="row">
+							<div class="col-12 col-md-6" id="validacion-live">
+								<div class="form-group">
+									<label for="inputEmail">RUT*</label> <input type="text" class="form-control"
+										id="rut" name="rut" ng-change="inCtrl.validarRut()" placeholder="Ej: 21216322-5"
+										ng-model="inCtrl.formData.rut" required>
+									<span id="errorRut" style="color:red">
+										<span ng-show="inCtrl.errors.rutVacio">Rut es obligatorio.</span>
+										<span ng-show="inCtrl.errors.rutFormato">Rut inválido.</span>
+									</span>
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="nombre">Nombre*</label> <input type="text"
+										ng-change="inCtrl.soloTextoNombre();" class="form-control" id="nombre"
+										placeholder="Ej: Francisco Zuñiga" ng-model="inCtrl.formData.nombre" required>
+									<span style="color:red">
+										<span ng-show="inCtrl.errors.nombre">Nombre es obligatorio.</span>
+									</span>
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="telefono">Teléfono*</label>
+									<div class="form-inline">
+										<label for="+56">+56</label>&nbsp;
+										<select style="width: 60px;!important" id="codigoTelefono" class="form-control"
+											required>
+											<option value="2" selected="selected">2</option>
+											<option value="9">9</option>
+										</select>&nbsp;
+										<input type="text" style="width: 309px;!important" class="form-control"
+											ng-change="inCtrl.soloNumeros();" 
+											name="telefono" ng-model="inCtrl.formData.telefono" required
+											placeholder="12345678" maxlength="8">
+										<span style="color:red">
+											<span ng-show="inCtrl.errors.nombre">Nombre es obligatorio.</span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="email">Email*</label> <input type="email" class="form-control"
+										name="email" ng-model="inCtrl.formData.email" required placeholder="hh@cc.cl">
+									<span style="color:red" ng-show="myForm2.email.$dirty && myForm2.email.$invalid">
+										<span ng-show="myForm2.email.$error.required">Email es obligatorio.</span>
+										<span ng-show="myForm2.email.$error.email">Email inválido.</span>
+									</span>
+								</div>
+							</div>
+							<div class="col-12 text-right">
+								<p>*Campos obligatorios</p>
+							</div>
+							<div class="col-12">
+								<button type="button" id="btnEnviar" ng-click="inCtrl.createTodo(myForm, myForm2)"
+									ng-disabled="myForm2.$invalid || !inCtrl.validarPaso2()"
+									class="btn btn-primary btn-lg btn-block">Enviar</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+		</div>
+	</form>
+	<!--paso3-->
+	<div class="container mb-5" id="paso3" name="paso3">
+		<section class="inputs-forms mt-3">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-10 px-5 py-2 card-white">
+					<form>
+						<div class="row">
+							<div class="col-12 text-center" name="retornaDevolucion" id="retornaDevolucion"></div>
+							<div class=" col-12 mt-3 mb-4">
+								<button type="button" ng-click="inCtrl.goPasoUno()"
+									class="btn btn-primary btn-lg btn-block">Volver</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div id="myModal" class="modal fade" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Error de Validación</h5>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p>Lo sentimos, la Orden de Compra u Orden de Servicio no existe en
+						nuestros registros.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+
+<div ng-controller="loginCtrl as lCtrl" class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%;">
+	<section class="hero-msg">
+		<div class="container">
+			<div class="row">
+				<div
+					class="col-12 d-flex justify-content-between align-items-center">
+					<h2>Devolución Web</h2>
+					<img src="images/box-header.png" width="55" alt="">
+				</div>
+				<div class="col-12">
+					<hr>
+				</div>
+				<div class="col-12">
+					
+				</div>
+			</div>
+		</div>
+	</section>
+	<form name="myForm" novalidate>
+		<div class="container mb-5" id="paso1" name="paso1">
+			<section class="inputs-forms mt-2">
+				<div class="row justify-content-left">
+					<h4 class="col-12 col-md-10 pl-0">INGRESA TUS DATOS</h4>
+					<div class="col-12 col-md-10 px-5 py-2 card-white" style="flex: 0 0 98.33333%!important; max-width: 99.33333%!important;">
+						<div class="row justify-content-center">
+							<div class="col-12 col-md-8">
+								<div class="form-group">
+									<input type="text" class="form-control"
+                                                            ng-model-options="{ updateOn: 'blur' }"
+                                                            placeholder="Usuario*" name="usuario"
+                                                            ng-model="lCtrl.formData.usuario" required />
+                                                        <span style="color:red">
+                                                            <span>{{lCtrl.formData.error}}</span>
+                                                        </span>
+								</div>
+							</div>
+							<div class="col-12 col-md-8">
+								<div class="form-group">
+									<input type="password" class="form-control"
+                                                            ng-model-options="{ updateOn: 'blur' }"
+                                                            placeholder="Contraseña*" name="pass"
+                                                            ng-model="lCtrl.formData.pass" required />
+								</div>
+							</div>
+							<div class="col-12 col-md-8 text-right">
+								<p>*Campos obligatorios</p>
+							</div>
+							<div class="col-12 col-md-9">
+								<button ng-click="lCtrl.buscarUsuario()" type="button"
+									class="btn btn-primary btn-lg btn-block">Ingresar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+		</div>
+	</form>
+</div>

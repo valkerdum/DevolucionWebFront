@@ -1,0 +1,330 @@
+body {
+    background: #f4f4f4;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+hr {
+    margin-top: 0.5rem;
+    margin-bottom: 0.9rem;
+}
+
+.etapas {
+    padding-top: 10px;
+}
+
+.etapas .paso {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.etapas .paso.active .circulo,
+.etapas .paso.done .circulo {
+    background: #39c0e0;
+    border: solid 12px #c0e5f1;
+}
+
+.etapas .paso.active .circulo:before,
+.etapas .paso.done .circulo:before {
+    content: '';
+    background: url("../images/arrowright.svg");
+    width: 20px;
+    display: block;
+    height: 20px;
+    margin-left: 6px;
+    margin-top: 5px;
+}
+
+.etapas .paso.active h5,
+.etapas .paso.done h5 {
+    color: #39c0e0;
+}
+
+.etapas .paso.done .linea {
+    background: #39c0e0;
+}
+
+.etapas .paso h2 {
+    color: #c0c0c0;
+}
+
+@media only screen and (max-width: 992px) {
+    .etapas .paso h2 {
+        font-size: 1.7rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .etapas .paso h2 {
+        font-size: 1.5rem;
+    }
+}
+
+.etapas .paso .circulo {
+    width: 50px;
+    height: 50px;
+    display: block;
+    border-radius: 50%;
+    background: #fff;
+    border: solid 4px #e2e0e0;
+    z-index: 2;
+}
+
+.etapas .paso .linea {
+    transform: translateY(-37px);
+    z-index: 1;
+    width: 100%;
+    height: 20px;
+    background: #e2e0e0;
+}
+
+.etapas .paso.paso-uno .linea {
+    margin-left: 5px;
+}
+
+.etapas .paso.paso-dos.active .linea {
+    background: #39c0e0;
+    background: linear-gradient(90deg, rgba(57, 192, 224, 1) 0%, rgba(57, 192, 224, 1) 50%, rgba(226, 224, 224, 1) 50%, rgba(226, 224, 224, 1) 100%);
+}
+
+.etapas .paso.paso-tres .linea {
+    margin-right: 5px;
+}
+
+.inputs-forms h5 {
+    color: #0033a0;
+}
+
+.inputs-forms .card-white {
+    background-color: #fff;
+}
+
+.inputs-forms .form-control {
+    border-color: #39c0e0;
+    border-width: 2px;
+    border-radius: 8px;
+    color: #0033a0;
+    min-height: 50px;
+}
+
+.inputs-forms .f-tooltip {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #858585;
+    display: inline-block;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+}
+
+.inputs-forms .f-tooltip:hover {
+    cursor: pointer;
+}
+
+.inputs-forms .f-tooltip:hover:before {
+    width: 325px;
+    padding: 16px;
+    background: #e2e0e0;
+    content: 'Ingresa el Número de Orden de Compra o Número de Orden de Servicio. Si no la encuentras contacte con la tienda donde realizaste tu compra.';
+    color: #706f6f;
+    border-radius: 8px;
+    left: -332px;
+    position: absolute;
+    top: -40px;
+    text-align: justify;
+}
+
+.inputs-forms label,
+.inputs-forms p {
+    color: #858585;
+}
+
+.inputs-forms .btn-primary {
+    background-color: #0033a0;
+    border-color: #0033a0;
+}
+
+.inputs-forms .btn {
+    border-radius: 8px;
+}
+
+.hero-msg {
+    padding: 10px 0;
+    background: #c2e6f3;
+    background: linear-gradient(0deg, rgba(194, 230, 243, 1) 0%, rgba(224, 241, 247, 1) 100%);
+}
+
+.hero-msg h1 {
+    color: #0033a0;
+    font-size: 35px;
+}
+
+.hero-msg hr {
+    border-top-color: #39c0e0;
+}
+
+.hero-msg h6 {
+    color: #39c0e0;
+    font-weight: bold;
+}
+
+.header-dashboard {
+    background: #0033a0;
+    display: flex;
+    min-height: 200px;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-estados .row {
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-estados .estado {
+    border-radius: 12px 4px 4px 12px;
+    border: solid 1px #dbdbdc;
+    border-left-width: 12px;
+    display: flex;
+    width: 100%;
+    min-height: 90px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-estados .estado:hover {
+    transition: 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.dashboard-estados .estado h4 {
+    text-transform: uppercase;
+    margin-left: 12px;
+    color: #292929;
+    margin-bottom: 0;
+}
+
+.dashboard-estados .estado img {
+    margin-right: 12px;
+}
+
+.dashboard-estados .estado.pendientes {
+    border-left-color: #0033a0;
+}
+
+.dashboard-estados .estado.pendientes:hover {
+    border-color: #0033a0;
+}
+
+.dashboard-estados .estado.pendientes:hover h4 {
+    color: #0033a0;
+}
+
+.dashboard-estados .estado.aceptadas {
+    border-left-color: #3aaa35;
+}
+
+.dashboard-estados .estado.aceptadas:hover {
+    border-color: #3aaa35;
+}
+
+.dashboard-estados .estado.aceptadas:hover h4 {
+    color: #3aaa35;
+}
+
+.dashboard-estados .estado.rechazadas {
+    border-left-color: #e30613;
+}
+
+.dashboard-estados .estado.rechazadas:hover {
+    border-color: #e30613;
+}
+
+.dashboard-estados .estado.rechazadas:hover h4 {
+    color: #e30613;
+}
+
+.dash-data-table {
+    border: solid 1px #dbdbdc;
+}
+
+.dash-data-table header {
+    background-color: #f8f9fc;
+    padding: 12px 16px;
+    color: #5276d8;
+    font-weight: bold;
+    border-bottom: solid 1px #dbdbdc;
+}
+
+.dash-data-table section {
+    padding: 12px 16px;
+}
+
+.header {
+    background: #0033a0;
+}
+
+.header .row {
+    min-height: 100px;
+}
+
+.pre-footer img {
+    width: 100%;
+}
+
+.footer {
+    background: #ebebeb;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.footer p {
+    color: #858585;
+}
+
+.footer h6,
+.footer .titulo-seccion {
+    color: #39c0e0;
+}
+
+.footer .titulo-seccion {
+    font-weight: bold;
+}
+
+.footer h5 {
+    color: #0033a0;
+}
+
+.footer li a {
+    color: #858585;
+}
+
+/* Lista productos */
+tbody.lista-productos tr {
+    cursor: pointer;
+}
+
+.c-pointer {
+    cursor: pointer;
+}
+
+/* Fin lista productos
+
+/* Datepicker */
+datepicker{
+    text-transform: capitalize;
+}
+
+/* Fin Datepicker*/
