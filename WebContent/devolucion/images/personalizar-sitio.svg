@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="88px" height="117px" viewBox="0 0 88 117" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>brush-solid</title>
+    <defs>
+        <filter color-interpolation-filters="auto" id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.129412 0 0 0 0 0.588235 0 0 0 0 0.952941 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-1356.000000, -590.000000)">
+            <g id="brush-solid" transform="translate(1166.000000, 533.000000)" filter="url(#filter-1)">
+                <g transform="translate(190.000000, 57.000000)">
+                    <path d="M80.6666667,0 L7.33333333,0 C3.28395833,0 0,3.27462891 0,7.3125 L0,58.5 L88,58.5 L88,7.3125 C88,3.27462891 84.7160417,0 80.6666667,0 Z M0,73.125 C0,81.2030273 6.56791667,87.75 14.6666667,87.75 L29.3333333,87.75 L29.3333333,102.375 C29.3333333,110.453027 35.90125,117 44,117 C52.09875,117 58.6666667,110.453027 58.6666667,102.375 L58.6666667,87.75 L73.3333333,87.75 C81.4320833,87.75 88,81.2030273 88,73.125 L88,65.8125 L0,65.8125 L0,73.125 Z M44,96.890625 C47.0364583,96.890625 49.5,99.3448828 49.5,102.375 C49.5,105.402832 47.0364583,107.859375 44,107.859375 C40.9635417,107.859375 38.5,105.402832 38.5,102.375 C38.5,99.3448828 40.9635417,96.890625 44,96.890625 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

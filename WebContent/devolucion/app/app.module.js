@@ -1,7 +1,10 @@
 var app = angular.module("myApp", [
     'myAppRouter',
-    'loginModule',
-    'productosModule',
+    'color.picker',
     'consultaModule',
-    'ingresoModule'
+    'disenoConfigModule',
+    'footerDinamicoModule',
+    'ingresoModule',
+    'loginModule',
+    'productosModule'
 ]);

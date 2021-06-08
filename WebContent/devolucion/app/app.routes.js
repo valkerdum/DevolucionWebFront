@@ -1,4 +1,4 @@
-var app = angular.module('myAppRouter', ['ui.router']);
+var app = angular.module('myAppRouter', ['ui.router', 'headerDinamicoModule']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -68,16 +68,89 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/ingresar',
             views: {
                 header: {
-                    templateUrl: 'app/components/header/header.html'
+                    templateUrl: 'app/components/header-dinamico/header-edicion.html',
+                    controller: 'headerDinamicoCtrl as hdCtrl'                    
                 },
                 content: {
                     templateUrl: 'app/components/ingresar/ingresoDevolucion.html'
                 },
                 footer: {
-                    templateUrl: 'app/components/footer/footer.html'
+                    templateUrl: 'app/components/footer-dinamico/footer-dinamico.html'
+                }
+            }
+        })
+        .state('disenoConfig', {
+            url: '/diseno-config',
+            views: {
+                content: {
+                    templateUrl: 'app/components/diseno-config/diseno-config.html'
+                }
+            }
+        })
+        .state('dashboard-edicion', {
+            url: '/dashboard-edicion',
+            views: {
+                header: {
+                    templateUrl: 'app/components/header/header.html',
+                    controller: 'headerDinamicoCtrl as hdCtrl'                    
+                },
+                content: {
+                    templateUrl: 'app/components/dashboard/dashboard.html'
+                }
+                ,
+                footer: {
+                    templateUrl: 'app/components/footer-dinamico/footer-dinamico.html'
+                }
+            }
+        })
+        .state('generar-reporte', {
+            url: '/generar-reporte',
+            views: {
+                header: {
+                    templateUrl: 'app/components/header/header.html',
+                    controller: 'headerDinamicoCtrl as hdCtrl'                    
+                },
+                content: {
+                    templateUrl: 'app/components/generar-reporte/generar-reporte.html'
+                }
+                ,
+                footer: {
+                    templateUrl: 'app/components/footer-dinamico/footer-dinamico.html'
+                }
+            }
+        })
+        .state('panel-admin', {
+            url: '/panel-admin',
+            views: {
+                header: {
+                    templateUrl: 'app/components/header/header.html',
+                    controller: 'headerDinamicoCtrl as hdCtrl'                    
+                },
+                content: {
+                    templateUrl: 'app/components/panel-admin/panel-admin.html'
+                }
+                ,
+                footer: {
+                    templateUrl: 'app/components/footer-dinamico/footer-dinamico.html'
+                }
+            }
+        })
+        .state('personalizar-sitio', {
+            url: '/personalizar-sitio',
+            views: {
+                header: {
+                    templateUrl: 'app/components/header/header.html',
+                    controller: 'headerDinamicoCtrl as hdCtrl'                    
+                },
+                content: {
+                    templateUrl: 'app/components/personalizar-sitio/personalizar-sitio.html'
+                }
+                ,
+                footer: {
+                    templateUrl: 'app/components/footer-dinamico/footer-dinamico.html'
                 }
             }
         })
 
 
-});
+})

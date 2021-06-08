@@ -328,3 +328,131 @@ datepicker{
 }
 
 /* Fin Datepicker*/
+.font-ligth{
+    font-weight: 300;
+}
+
+.text-grey{
+    color: #333333;
+}
+
+.cards-dashboard{
+    margin-top: 150px;
+}
+.cards-dashboard .card {
+    padding: 20px;
+    background: #FFFFFF;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.06);
+    border-radius: 18px;
+    font-family: Nunito-Bold;
+    min-height: 200px;
+}
+.cards-dashboard h2{
+    font-size: 26px;
+    color: #292929!important;
+    margin-bottom: 0;
+}
+
+.header-sitio-edicion{
+    max-height: 50px;
+}
+
+.header-sitio-edicion .logo-edicion{
+    transform: translateY(-15px);
+}
+
+.header-sitio-edicion .card-edicion{
+    transform: translateY(-21px);
+}
+
+
+.header-personalizar {
+   background-color: #212121;
+}
+
+.header-personalizar h3 {
+    color: #fff;
+}
+
+.card-edicion{
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 6%);
+    padding: 6px 12px;
+    width: 168px;
+    display: inline-block;
+}
+
+.card-edicion ul {
+    margin-bottom: 0;
+}
+
+.card-edicion ul li a {
+    font-size: 14px;
+}
+
+.card-white{
+    border-radius: 12px;
+}
+
+.btn-validar{
+    position: relative;
+}
+.btn-validar .card-edicion{
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    padding:7px 12px;
+}
+.barra-follower{
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    background:#343333;
+    z-index: 10;
+    -webkit-box-shadow: 0px -27px 60px -40px rgba(0,0,0,0.67);
+    -moz-box-shadow: 0px -27px 60px -40px rgba(0,0,0,0.67);
+    box-shadow: 0px -27px 60px -40px rgba(0,0,0,0.67);
+}
+
+.spinner-button {
+    margin: 0 auto 0;
+    width: 70px;
+    text-align: center;
+  }
+  
+  .spinner-button > div {
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+  
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+  
+  .spinner-button .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+  }
+  
+  .spinner-button .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+  
+  @-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+  }
+  
+  @keyframes sk-bouncedelay {
+    0%, 80%, 100% { 
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    } 40% { 
+      -webkit-transform: scale(1.0);
+      transform: scale(1.0);
+    }
+  }
